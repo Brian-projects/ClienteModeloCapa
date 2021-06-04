@@ -9,6 +9,6 @@ namespace Data.Models
     public class TableBase
     {
         public int Id { get; set; }
-        public int EstatusId { get; set; }
+        
     }
 }

@@ -10,6 +10,7 @@ namespace Data.Models
     {
         public string Descripcion { get; set; }
         public ICollection<Cliente> Clientes { get; set; }
+        public int EstatusId { get; set; }
         public Estatus Estatus { get; set; }
     }
 }

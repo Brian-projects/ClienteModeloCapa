@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Data.Models
 {
-    public class Estatus
+    public class Estatus : TableBase
     {
-        public int Id { get; set; }
         public string Descripcion { get; set; }
         public bool State { get; set; }
         public ICollection<TipoCliente> tipoClientes { get; set; }

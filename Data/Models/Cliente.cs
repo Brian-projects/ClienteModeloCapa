@@ -22,6 +22,7 @@ namespace Data.Models
         public bool Balance { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public int TipoClienteId { get; set; }
+        public int EstatusId { get; set; }
         public TipoCliente TipoCliente { get; set; }
         public Estatus Estatus { get; set; }
     }
