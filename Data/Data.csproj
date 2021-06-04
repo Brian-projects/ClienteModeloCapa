@@ -55,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DBContext\ClienteDbContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Estatus.cs" />
+    <Compile Include="Models\TableBase.cs" />
+    <Compile Include="Models\TipoCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
