@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Data.DBContext;
-namespace Bussiness
+
+namespace Bussiness.StatusResult
 {
-    public class Bussiness
+    enum StatusCode
     {
-      
+        Success = 400,
+        BadRequest = 501,
+        NotFound = 404
     }
 }
