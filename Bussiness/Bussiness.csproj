@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{58352C1E-5873-44B8-AF9C-BCEF0D3FF0E4}</ProjectGuid>
+    <ProjectGuid>{33749D06-0CC7-4B1C-81F1-4698198842F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Data</RootNamespace>
-    <AssemblyName>Data</AssemblyName>
+    <RootNamespace>Bussiness</RootNamespace>
+    <AssemblyName>Bussiness</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -54,14 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data.cs" />
-    <Compile Include="DBContext\ClienteDbContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Cliente.cs" />
-    <Compile Include="Models\Estatus.cs" />
-    <Compile Include="Models\TableBase.cs" />
-    <Compile Include="Models\TipoCliente.cs" />
+    <Compile Include="Bussiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{58352c1e-5873-44b8-af9c-bcef0d3ff0e4}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

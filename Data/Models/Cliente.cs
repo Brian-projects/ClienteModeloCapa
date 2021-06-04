@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data.Models
 {
-    class Cliente : TableBase
+    public class Cliente : TableBase
     {
         [Required, StringLength(20)]
         public string Nombre { get; set; }

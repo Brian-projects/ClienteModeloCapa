@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Models
 {
-    class TipoCliente : TableBase
+    public class TipoCliente : TableBase
     {
         public string Descripcion { get; set; }
         public ICollection<Cliente> Clientes { get; set; }
