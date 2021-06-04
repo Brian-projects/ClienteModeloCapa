@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-   class Data
+    public class Class1
     {
-        public static void Main(string [] args) 
-        {
-            Console.WriteLine("Hola Mundo");
-        }
     }
 }
