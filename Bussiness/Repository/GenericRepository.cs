@@ -47,6 +47,7 @@ namespace Bussiness.Repository
                 };
             }
         }
+
         public async Task<OperationResult<T>> CreateResourceAsync(T Resource) 
         {
             try
@@ -70,6 +71,7 @@ namespace Bussiness.Repository
                 };
             }
         }
+
         public async Task<OperationResult<T>> UpdateResourceAsync(T Resource)
         {
             try
@@ -93,6 +95,7 @@ namespace Bussiness.Repository
                 };
             }
         }
+
         public async Task<OperationResult<T>> DeleteResourceAsync(int Id)
         {
             try 
@@ -116,5 +119,6 @@ namespace Bussiness.Repository
                 };
             }
         }
+
     }
 }
