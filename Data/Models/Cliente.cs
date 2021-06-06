@@ -17,9 +17,11 @@ namespace Data.Models
         public string Cedula { get; set; }
         [StringLength(12, MinimumLength = 10)]
         public string Telefono { get; set; }
+        [EmailAddress]
+        public string Correo { get; set; }
         public string Direccion { get; set; }
         [Required]
-        public bool Balance { get; set; }
+        public double Balance { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public int TipoClienteId { get; set; }
         public int EstatusId { get; set; }

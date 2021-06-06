@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bussiness", "Bussiness\Bussiness.csproj", "{33749D06-0CC7-4B1C-81F1-4698198842F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{842A29BA-33BE-427C-9D0A-59F538012730}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{C211AA43-F987-4E1A-92A4-101D09780D8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{33749D06-0CC7-4B1C-81F1-4698198842F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33749D06-0CC7-4B1C-81F1-4698198842F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33749D06-0CC7-4B1C-81F1-4698198842F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{842A29BA-33BE-427C-9D0A-59F538012730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{842A29BA-33BE-427C-9D0A-59F538012730}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{842A29BA-33BE-427C-9D0A-59F538012730}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{842A29BA-33BE-427C-9D0A-59F538012730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C211AA43-F987-4E1A-92A4-101D09780D8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C211AA43-F987-4E1A-92A4-101D09780D8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C211AA43-F987-4E1A-92A4-101D09780D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C211AA43-F987-4E1A-92A4-101D09780D8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

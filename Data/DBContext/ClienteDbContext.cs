@@ -15,6 +15,10 @@ namespace Data.DBContext
         public ClienteDbContext() : base("DefaultConnection") { }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TipoCliente>()
+                .HasRequired(x => x.Estatus)
+                .WithMany(x => x.tipoClientes)
+                .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);
         }

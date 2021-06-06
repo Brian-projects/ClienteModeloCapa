@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Bussiness.StatusResult;
 namespace Bussiness.Repository
 {
-    class GenericRepository<T> where T : TableBase
+    public class GenericRepository<T> where T : TableBase
     {
         private ClienteDbContext clienteDbContext = null;
         private DbSet<T> Table;
@@ -56,7 +56,7 @@ namespace Bussiness.Repository
                 var Rows = await clienteDbContext.SaveChangesAsync();
                 return new OperationResult<T>()
                 {
-                    Data = Resource,
+                    Data = null,
                     Message = (string)(Rows > 0 ? "Resource added successfully" : ""),
                     Status = (int)(Rows > 0? StatusCode.Success : StatusCode.BadRequest)
                 };

@@ -9,8 +9,8 @@ namespace Data.Models
     public class TipoCliente : TableBase
     {
         public string Descripcion { get; set; }
-        public ICollection<Cliente> Clientes { get; set; }
         public int EstatusId { get; set; }
+        public ICollection<Cliente> Clientes { get; set; }
         public Estatus Estatus { get; set; }
     }
 }

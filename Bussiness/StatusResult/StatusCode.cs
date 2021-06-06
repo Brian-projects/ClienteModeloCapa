@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bussiness.StatusResult
 {
-    enum StatusCode
+    public enum StatusCode
     {
         Success = 400,
         BadRequest = 501,
