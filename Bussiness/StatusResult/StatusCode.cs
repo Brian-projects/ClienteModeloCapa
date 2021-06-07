@@ -8,8 +8,8 @@ namespace Bussiness.StatusResult
 {
     public enum StatusCode
     {
-        Success = 400,
-        BadRequest = 501,
+        Success = 200,
+        BadRequest = 400,
         NotFound = 404
     }
 }
