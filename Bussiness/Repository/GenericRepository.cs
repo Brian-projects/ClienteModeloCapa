@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Bussiness.StatusResult;
+using System.Threading.Tasks;
+
 namespace Bussiness.Repository
 {
     public class GenericRepository<T> where T : TableBase
@@ -19,7 +20,7 @@ namespace Bussiness.Repository
             Table = clienteDbContext.Set<T>();
         }
 
-        public async Task<List<T>> GetAllResourcesAsync() 
+        public async System.Threading.Tasks.Task<List<T>> GetAllResourcesAsync() 
         {
             return await Table.ToListAsync();
         }
