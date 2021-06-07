@@ -13,22 +13,22 @@ namespace WebApi.Controllers
 {
     public class TipoClienteController : ApiController
     {
-        public readonly GenericRepository<TipoCliente> genericRepository;
+        public readonly TipoClienteRepository tipoClienteRepository;
         public TipoClienteController() 
         {
-            genericRepository = new GenericRepository<TipoCliente>();
+            tipoClienteRepository = new TipoClienteRepository();
         }
 
         [HttpGet]
         public async Task<List<TipoCliente>> GetClients()
         {
-            return await genericRepository.GetAllResourcesAsync();
+            return await tipoClienteRepository.GetAllResourcesAsync();
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> GetClientById(int id)
         {
-            OperationResult<TipoCliente> OResult = await genericRepository.GetResourceByIdAsync(id);
+            OperationResult<Object> OResult = await tipoClienteRepository.GetResourceByIdAsync(id);
             if (OResult.Status == (int)Bussiness.StatusResult.StatusCode.Success)
             {
                 return Ok(OResult);
@@ -45,7 +45,7 @@ namespace WebApi.Controllers
             }
             else
             {
-                OperationResult<TipoCliente> result = await genericRepository.CreateResourceAsync(TipoCliente);
+                OperationResult<TipoCliente> result = await tipoClienteRepository.CreateResourceAsync(TipoCliente);
                 if (result.Status == (int)Bussiness.StatusResult.StatusCode.BadRequest)
                 {
                     return BadRequest();
@@ -56,11 +56,11 @@ namespace WebApi.Controllers
         }
 
         [HttpPut]
-        public async System.Threading.Tasks.Task<IHttpActionResult> UpdateClient(int Id, [FromBody] TipoCliente TipoCliente)
+        public async Task<IHttpActionResult> UpdateClient(int Id, [FromBody] TipoCliente TipoCliente)
         {
             if (TipoCliente.Id == Id)
             {
-                OperationResult<TipoCliente> result = await genericRepository.UpdateResourceAsync(TipoCliente);
+                OperationResult<TipoCliente> result = await tipoClienteRepository.UpdateResourceAsync(TipoCliente);
                 if (result.Status == (int)Bussiness.StatusResult.StatusCode.Success)
                 {
                     return Ok(result);
@@ -72,7 +72,7 @@ namespace WebApi.Controllers
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteClient(int Id)
         {
-            OperationResult<TipoCliente> result = await genericRepository.DeleteResourceAsync(Id);
+            OperationResult<TipoCliente> result = await tipoClienteRepository.DeleteResourceAsync(Id);
             if (result.Status == (int)Bussiness.StatusResult.StatusCode.Success)
             {
                 return Ok(result);

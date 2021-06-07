@@ -9,28 +9,33 @@ using System.Threading.Tasks;
 using Bussiness.StatusResult;
 namespace Bussiness.Repository
 {
-    public class GenericRepository<T> where T : TableBase
+    public class ClienteRepository 
     {
-        private ClienteDbContext clienteDbContext = null;
-        private DbSet<T> Table;
-        public GenericRepository() 
+        private ClienteDbContext Db = null;
+        public ClienteRepository() 
         {
-            clienteDbContext = new ClienteDbContext();
-            Table = clienteDbContext.Set<T>();
+            Db = new ClienteDbContext();
         }
 
-        public async Task<List<T>> GetAllResourcesAsync() 
+        public async Task<List<Cliente>> GetAllResourcesAsync() 
         {
-            return await Table.ToListAsync();
+            return await Db.Clientes.ToListAsync();
         }
        
-        public async Task<OperationResult<T>> GetResourceByIdAsync(int Id) 
+        public async Task<OperationResult<Object>> GetResourceByIdAsync(int Id) 
         {
             try
             {
-                var data = await Table.FirstOrDefaultAsync(x => x.Id == Id);
+                var data = await Db.Clientes
+                    .Where(x => x.Id == Id)
+                    .Select(x => new
+                    {
+                        Cliente = x,
+                        TipoClienteDescripcion = x.TipoCliente.Descripcion,
+                        EstatusDescripcion = x.Estatus.Descripcion
+                    }).FirstOrDefaultAsync();
 
-                return new OperationResult<T>()
+                return new OperationResult<Object>()
                 {
                     Status = (int)(data == null ? StatusCode.NotFound : StatusCode.Success),
                     Message = (string)(data == null ? "The source was not found" : ""),
@@ -39,7 +44,7 @@ namespace Bussiness.Repository
             }
             catch (Exception E) 
             {
-                return new OperationResult<T>()
+                return new OperationResult<Object>()
                 {
                     Data = null,
                     Message = E.Message,
@@ -48,13 +53,13 @@ namespace Bussiness.Repository
             }
         }
 
-        public async Task<OperationResult<T>> CreateResourceAsync(T Resource) 
+        public async Task<OperationResult<Cliente>> CreateResourceAsync(Cliente Resource) 
         {
             try
             {
-                clienteDbContext.Entry(Resource).State = EntityState.Added;
-                var Rows = await clienteDbContext.SaveChangesAsync();
-                return new OperationResult<T>()
+                Db.Entry(Resource).State = EntityState.Added;
+                var Rows = await Db.SaveChangesAsync();
+                return new OperationResult<Cliente>()
                 {
                     Data = null,
                     Message = (string)(Rows > 0 ? "Resource added successfully" : ""),
@@ -63,7 +68,7 @@ namespace Bussiness.Repository
             }
             catch (Exception E) 
             {
-                return new OperationResult<T>()
+                return new OperationResult<Cliente>()
                 {
                     Message = E.Message,
                     Data = null,
@@ -72,13 +77,13 @@ namespace Bussiness.Repository
             }
         }
 
-        public async Task<OperationResult<T>> UpdateResourceAsync(T Resource)
+        public async Task<OperationResult<Cliente>> UpdateResourceAsync(Cliente Resource)
         {
             try
             {
-                clienteDbContext.Entry(Resource).State = EntityState.Modified;
-                var Rows = await clienteDbContext.SaveChangesAsync();
-                return new OperationResult<T>()
+                Db.Entry(Resource).State = EntityState.Modified;
+                var Rows = await Db.SaveChangesAsync();
+                return new OperationResult<Cliente>()
                 {
                     Data = Resource,
                     Message = (string)(Rows > 0 ? "Resource updated successfully" : ""),
@@ -87,7 +92,7 @@ namespace Bussiness.Repository
             }
             catch (Exception E)
             {
-                return new OperationResult<T>()
+                return new OperationResult<Cliente>()
                 {
                     Message = E.Message,
                     Data = null,
@@ -96,14 +101,14 @@ namespace Bussiness.Repository
             }
         }
 
-        public async Task<OperationResult<T>> DeleteResourceAsync(int Id)
+        public async Task<OperationResult<Cliente>> DeleteResourceAsync(int Id)
         {
             try 
             {
-                var data = await Table.FirstOrDefaultAsync(x => x.Id == Id);
-                clienteDbContext.Entry(data).State = EntityState.Deleted;
-                var Rows = await clienteDbContext.SaveChangesAsync();
-                return new OperationResult<T>()
+                var data = await Db.Clientes.FirstOrDefaultAsync(x => x.Id == Id);
+                Db.Entry(data).State = EntityState.Deleted;
+                var Rows = await Db.SaveChangesAsync();
+                return new OperationResult<Cliente>()
                 {
                     Data = null,
                     Message = (string)(Rows > 0 ? "Resource deleted successfully" : ""),
@@ -111,7 +116,7 @@ namespace Bussiness.Repository
                 };
             } catch (Exception E) 
             {
-                return new OperationResult<T>()
+                return new OperationResult<Cliente>()
                 {
                     Data = null,
                     Message = E.Message,

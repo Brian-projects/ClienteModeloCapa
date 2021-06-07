@@ -60,7 +60,8 @@
   <ItemGroup>
     <Compile Include="Bussiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\TipoClienteRepository.cs" />
+    <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="StatusResult\OperationResult.cs" />
     <Compile Include="StatusResult\StatusCode.cs" />
   </ItemGroup>

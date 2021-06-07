@@ -14,11 +14,11 @@ namespace WebApi.Controllers
 {
     public class ClienteController : ApiController
     {
-        private readonly GenericRepository<Cliente> genericRepository;
+        private readonly ClienteRepository genericRepository;
         private HttpResponseMessage response;
         public ClienteController() 
         {
-            genericRepository = new GenericRepository<Cliente>();
+            genericRepository = new ClienteRepository();
         }
         [HttpGet]
         public async Task<List<Cliente>> GetClients() 
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
         public async Task<HttpResponseMessage> GetClientById(int id)
         {
             
-            OperationResult<Cliente> OResult = await genericRepository.GetResourceByIdAsync(id);
+            OperationResult<Object> OResult = await genericRepository.GetResourceByIdAsync(id);
             if (OResult.Status == (int)Bussiness.StatusResult.StatusCode.Success) 
             {
                 response = Request.CreateResponse(HttpStatusCode.OK, OResult);
