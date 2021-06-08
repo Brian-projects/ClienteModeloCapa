@@ -22,29 +22,29 @@ namespace Bussiness.Repository
             return await Db.Clientes.ToListAsync();
         }
        
-        public async Task<OperationResult<Object>> GetResourceByIdAsync(int Id) 
+        public async Task<OperationResult<ClienteExtended>> GetResourceByIdAsync(int Id) 
         {
             try
             {
-                var data = await Db.Clientes
+                ClienteExtended data = await Db.Clientes
                     .Where(x => x.Id == Id)
-                    .Select(x => new
+                    .Select(x => new ClienteExtended()
                     {
-                        Cliente = x,
+                        cliente = x,
                         TipoClienteDescripcion = x.TipoCliente.Descripcion,
                         EstatusDescripcion = x.Estatus.Descripcion
                     }).FirstOrDefaultAsync();
 
-                return new OperationResult<Object>()
+                return new OperationResult<ClienteExtended>()
                 {
                     Status = (int)(data == null ? StatusCode.NotFound : StatusCode.Success),
                     Message = (string)(data == null ? "The source was not found" : ""),
-                    Data = data == null ? null : data
+                    Data = data ?? null
                 };
             }
             catch (Exception E) 
             {
-                return new OperationResult<Object>()
+                return new OperationResult<ClienteExtended>()
                 {
                     Data = null,
                     Message = E.Message,
